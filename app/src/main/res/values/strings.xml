@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">anyang_setup</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="spinner_items">
+        <item>소프트웨어</item>
+        <item>컴퓨터공학</item>
+        <item>국어국문</item>
+        <item>글로벌경영</item>
+        <item>유아교육</item>
+
+
+    </string-array>
+</resources>
