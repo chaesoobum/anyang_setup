@@ -24,6 +24,10 @@
         <activity
             android:name="com.example.anyang_setup.MainActivity"
             android:exported="false" />
+        <activity
+            android:name="com.example.anyang_setup.DiagnosisActivity"
+            android:exported="false" />
+
 
     </application>
 

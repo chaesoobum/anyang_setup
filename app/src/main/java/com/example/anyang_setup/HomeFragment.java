@@ -1,11 +1,11 @@
 package com.example.anyang_setup;
 
-import android.graphics.drawable.BitmapDrawable;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.ScrollView;
 
 import androidx.fragment.app.Fragment;
@@ -26,10 +26,10 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    //이미지 변경용 변수선언
+    //스크롤뷰 객체 선언
     ScrollView scrollView;
-    ImageView imageView;
-    BitmapDrawable bitmap;
+    Button button;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -69,7 +69,18 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         scrollView = view.findViewById(R.id.scrollView);
+        button = view.findViewById(R.id.diagnosis);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), DiagnosisActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
+
+
+
 
 }
