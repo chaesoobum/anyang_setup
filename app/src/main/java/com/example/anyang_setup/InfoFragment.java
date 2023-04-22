@@ -3,9 +3,6 @@ package com.example.anyang_setup;
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +33,7 @@ public class InfoFragment extends Fragment {
     private String mParam2;
     private TextView majorname;
 
-    //이미지 변경용 변수선언
+    //이미지용 변수선언
     ScrollView scrollView;
     ImageView imageView;
     BitmapDrawable bitmap;
