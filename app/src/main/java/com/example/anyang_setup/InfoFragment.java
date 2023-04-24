@@ -85,8 +85,16 @@ public class InfoFragment extends Fragment {
 
         setSpinner(view);
 
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 아무런 동작도 하지 않음
+            }
+        });
+
         return view;
     }
+
 
     private void setSpinner(View view) {
         Spinner spinner = view.findViewById(R.id.spinner); // Spinner 객체를 가져옴
