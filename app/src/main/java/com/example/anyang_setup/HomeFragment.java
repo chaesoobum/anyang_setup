@@ -68,7 +68,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        scrollView = view.findViewById(R.id.scrollView);
+        scrollView = view.findViewById(R.id.scrollView_home);
         button = view.findViewById(R.id.diagnosis);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
