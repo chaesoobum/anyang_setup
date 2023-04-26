@@ -37,7 +37,7 @@
                     android:layout_centerVertical="true"
                     android:gravity="center"
                     android:text="채플"
-                    android:textSize="30dp"/>
+                    android:textSize="20dp"/>
                 
             </RelativeLayout>
 
