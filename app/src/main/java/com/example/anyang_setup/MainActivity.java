@@ -10,6 +10,8 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     HomeFragment homeFragment;
     InfoFragment infoFragment;
     SettingFragment settingFragment;
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
@@ -51,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
     }
+
 
 }
