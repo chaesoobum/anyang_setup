@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (selectedItemId == R.id.info) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.containers, infoFragment).commit();
                     return true;
-                } else if (selectedItemId == R.id.a) {
+                } else if (selectedItemId == R.id.spec) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.containers, specFragment).commit();
                     return true;
                 }

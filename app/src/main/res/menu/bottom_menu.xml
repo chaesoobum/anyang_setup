@@ -10,7 +10,7 @@
         />
 
     <item
-        android:id="@+id/a"
+        android:id="@+id/spec"
         android:enabled="true"
         android:icon="@drawable/ic_spec"
         android:title="스펙"

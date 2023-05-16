@@ -16,6 +16,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/Major_system"
                 android:layout_width="390dp"
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
