@@ -78,6 +78,6 @@ public class StartActivity extends AppCompatActivity {
                         }
                 );
             }
-        }, 4000); // 2초 후에 실행
+        }, 4000); // 5초 후에 실행
     }
 }

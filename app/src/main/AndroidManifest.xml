@@ -15,7 +15,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.anyang_setup.StartActivity"
+            android:name="com.example.anyang_setup.webview"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

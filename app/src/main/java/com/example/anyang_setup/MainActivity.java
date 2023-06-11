@@ -2,6 +2,7 @@ package com.example.anyang_setup;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.webkit.WebView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,11 +19,14 @@ public class MainActivity extends AppCompatActivity {
     SpecFragment specFragment;
 
 
+    public static WebView myWebView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+
 
         homeFragment = new HomeFragment();
         infoFragment = new InfoFragment();

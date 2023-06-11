@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="1000dp"
@@ -39,7 +40,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="250dp"
                 android:layout_marginTop="50dp"
-                android:text="홍길동" />
+                android:text=""
+                />
 
             <TextView
                 android:layout_width="match_parent"
@@ -54,7 +56,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="250dp"
                 android:layout_marginTop="80dp"
-                android:text="2018EXXXX" />
+                android:text="" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -69,7 +71,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="250dp"
                 android:layout_marginTop="110dp"
-                android:text="소프트웨어학과" />
+                android:text="" />
 
             <RelativeLayout
                 android:layout_width="390dp"
@@ -80,16 +82,16 @@
 
                 <TextView
 
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:text="취득학점 :" />
 
                 <TextView
                     android:id="@+id/Earned_Credits"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="80dp"
                     android:layout_marginTop="20dp"
                     android:text="105" />
@@ -97,7 +99,7 @@
                 <TextView
 
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="150dp"
                     android:layout_marginTop="20dp"
                     android:text="잔여학점 :" />
@@ -105,7 +107,7 @@
                 <TextView
                     android:id="@+id/Remaining_Credits"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="210dp"
                     android:layout_marginTop="20dp"
                     android:text="25" />
@@ -113,7 +115,7 @@
                 <TextView
 
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="50dp"
                     android:text="전공학점 :" />
@@ -121,15 +123,15 @@
                 <TextView
                     android:id="@+id/major_Credits"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="80dp"
                     android:layout_marginTop="50dp"
-                    android:text="15" />
+                    android:text="58" />
 
                 <TextView
 
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="150dp"
                     android:layout_marginTop="50dp"
                     android:text="교양학점 :" />
@@ -137,10 +139,10 @@
                 <TextView
                     android:id="@+id/Liberal_Arts_Credits"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="210dp"
                     android:layout_marginTop="50dp"
-                    android:text="10" />
+                    android:text="45" />
 
 
                 <Button
@@ -156,9 +158,8 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_width="390dp"
-                android:layout_height="470dp"
-                android:layout_centerHorizontal="true"
+                android:layout_width="match_parent"
+                android:layout_height="483dp"
                 android:layout_marginTop="250dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/shape_corners">
@@ -169,6 +170,11 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
                     android:text="시간표" />
+
+                <WebView
+                    android:id="@+id/webview_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp" />
 
             </RelativeLayout>
 

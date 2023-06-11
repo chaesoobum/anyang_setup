@@ -3,6 +3,7 @@ package com.example.anyang_setup;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.ValueCallback;
@@ -34,7 +35,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-
         WebViewClient webViewClient = new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -60,8 +60,9 @@ public class LoginActivity extends AppCompatActivity {
         CookieSyncManager.createInstance(this);
 
         myWebView.loadUrl("https://tis.anyang.ac.kr/main.do#");
-        //myWebView.setVisibility(View.GONE);
+        myWebView.setVisibility(View.GONE);
 
+        //String from_setting_logout_key = getIntent().getStringExtra("from_setting_logout_key");
 
 
 
@@ -154,6 +155,60 @@ public class LoginActivity extends AppCompatActivity {
         // JavaScript로 로그인 버튼 클릭 이벤트 처리
         myWebView.loadUrl("https://tis.anyang.ac.kr/main.do#");
 
-
     }
+
+
+    /*private void Logout() {
+
+        WebViewClient webViewClient = new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if (Uri.parse(url).getHost().equals("tis.anyang.ac.kr")) {
+                    // 해당 도메인에 대해서는 WebView에서 처리
+                    return false;
+                } else {
+                    // 다른 도메인에 대해서는 해당 도메인으로 WebView에서 페이지 이동
+                    view.loadUrl(url);
+                    return true;
+                }
+            }
+        };
+
+        myWebView.setWebViewClient(webViewClient);
+        myWebView.setWebChromeClient(new WebChromeClient());
+        myWebView.getSettings().setJavaScriptEnabled(true); // JavaScript 활성화
+
+        // 쿠키 관리를 위한 설정
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.setAcceptCookie(true);
+        cookieManager.setAcceptThirdPartyCookies(myWebView, true);
+        CookieSyncManager.createInstance(this);
+
+        myWebView.loadUrl("https://tis.anyang.ac.kr/main.do#");
+        //myWebView.setVisibility(View.GONE);
+
+        //로그아웃버튼누르기
+        myWebView.evaluateJavascript(
+                "(function() {" +
+                        "    var looutButton = document.getElementById('mainframe_childframe_form_topDiv_titleDiv_spaceDiv_BTN_LOGOUT'); " +
+                        "    if (logoutButton) { " +
+                        "        logoutButton.click(); " +
+                        "    } " +
+                        "})();",
+                null
+        );
+        //로그아웃 팝업버튼 확인클릭
+        myWebView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, final android.webkit.JsResult result) {
+                result.confirm();
+                return true;
+            }
+        });
+
+
+    }*/
+
+
 }
+
