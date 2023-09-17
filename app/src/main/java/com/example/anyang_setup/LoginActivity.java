@@ -16,12 +16,21 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class LoginActivity extends AppCompatActivity {
     private EditText mUsernameEditText;
     private EditText mPasswordEditText;
     private Button mLoginButton;
 
     private WebView myWebView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         mUsernameEditText = findViewById(R.id.username_edit_text);
         mPasswordEditText = findViewById(R.id.password_edit_text);
         mLoginButton = findViewById(R.id.login_button);
+
+
 
 
 
@@ -62,16 +73,13 @@ public class LoginActivity extends AppCompatActivity {
         myWebView.loadUrl("https://tis.anyang.ac.kr/main.do#");
         myWebView.setVisibility(View.GONE);
 
-        //String from_setting_logout_key = getIntent().getStringExtra("from_setting_logout_key");
-
-
 
         // 로그인 버튼 클릭 시 WebView에서 JavaScript 실행
         mLoginButton.setOnClickListener(v -> {
-            String username = mUsernameEditText.getText().toString();
+            String ID = mUsernameEditText.getText().toString();
             String password = mPasswordEditText.getText().toString();
 
-            if (username.isEmpty()) {
+            if (ID.isEmpty()) {
                 Toast.makeText(LoginActivity.this, "학번을 입력하세요", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -80,10 +88,39 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "비밀번호를 입력하세요", Toast.LENGTH_SHORT).show();
                 return;
             }
+            Response.Listener<String> responseListener = new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONObject jsonObject = new JSONObject( response );
+                        boolean success = jsonObject.getBoolean( "success" );
+
+                        if(success) {//로그인 성공시
+
+                            //Toast.makeText( getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT ).show();
+                            //Intent intent = new Intent( LoginActivity.this, MainActivity.class );
+                            //startActivity( intent );
+
+
+
+
+                        } else {//로그인 실패시
+                            Toast.makeText( getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT ).show();
+                            return;
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+
+            //서버로 Volley를 이용해서 요청
+
 
             myWebView.evaluateJavascript(
                     "(function() { " +
-                            "    document.getElementById('id').value = '" + username + "'; " +
+                            "    document.getElementById('id').value = '" + ID + "'; " +
                             "    document.getElementById('password').value = '" + password + "'; " +
                             "    var loginButton = document.getElementById('loginImg'); " +
                             "    if (loginButton) { " +
@@ -115,6 +152,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
 
+
+
             // 팝업 확인 버튼 자동 클릭
             myWebView.setWebChromeClient(new WebChromeClient() {
                 @Override
@@ -140,6 +179,10 @@ public class LoginActivity extends AppCompatActivity {
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
+
+                                    LoginRequest registerRequest = new LoginRequest(ID, responseListener);
+                                    RequestQueue queue = Volley.newRequestQueue( LoginActivity.this );
+                                    queue.add( registerRequest );
                                 } else {
                                     // 로그인에 실패한 경우 처리
                                     // 예: Toast로 실패 메시지 출력
@@ -155,60 +198,6 @@ public class LoginActivity extends AppCompatActivity {
         // JavaScript로 로그인 버튼 클릭 이벤트 처리
         myWebView.loadUrl("https://tis.anyang.ac.kr/main.do#");
 
+
     }
-
-
-    /*private void Logout() {
-
-        WebViewClient webViewClient = new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (Uri.parse(url).getHost().equals("tis.anyang.ac.kr")) {
-                    // 해당 도메인에 대해서는 WebView에서 처리
-                    return false;
-                } else {
-                    // 다른 도메인에 대해서는 해당 도메인으로 WebView에서 페이지 이동
-                    view.loadUrl(url);
-                    return true;
-                }
-            }
-        };
-
-        myWebView.setWebViewClient(webViewClient);
-        myWebView.setWebChromeClient(new WebChromeClient());
-        myWebView.getSettings().setJavaScriptEnabled(true); // JavaScript 활성화
-
-        // 쿠키 관리를 위한 설정
-        CookieManager cookieManager = CookieManager.getInstance();
-        cookieManager.setAcceptCookie(true);
-        cookieManager.setAcceptThirdPartyCookies(myWebView, true);
-        CookieSyncManager.createInstance(this);
-
-        myWebView.loadUrl("https://tis.anyang.ac.kr/main.do#");
-        //myWebView.setVisibility(View.GONE);
-
-        //로그아웃버튼누르기
-        myWebView.evaluateJavascript(
-                "(function() {" +
-                        "    var looutButton = document.getElementById('mainframe_childframe_form_topDiv_titleDiv_spaceDiv_BTN_LOGOUT'); " +
-                        "    if (logoutButton) { " +
-                        "        logoutButton.click(); " +
-                        "    } " +
-                        "})();",
-                null
-        );
-        //로그아웃 팝업버튼 확인클릭
-        myWebView.setWebChromeClient(new WebChromeClient() {
-            @Override
-            public boolean onJsAlert(WebView view, String url, String message, final android.webkit.JsResult result) {
-                result.confirm();
-                return true;
-            }
-        });
-
-
-    }*/
-
-
 }
-

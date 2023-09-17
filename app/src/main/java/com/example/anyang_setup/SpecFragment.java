@@ -1,5 +1,7 @@
 package com.example.anyang_setup;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +61,53 @@ public class SpecFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_spec, container, false);
+        View view = inflater.inflate(R.layout.fragment_spec, container, false);
+
+        // 버튼을 찾아서 클릭 리스너를 설정합니다.
+        Button button11 = view.findViewById(R.id.personal_button); //자기소개서 버튼
+/*        Button button12 = view.findViewById(R.id.button12);
+        Button button13 = view.findViewById(R.id.button13);*/
+        Button employmentButton = view.findViewById(R.id.employment_button);
+        button11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Personal Statement Activity로 이동하는 코드를 추가합니다.
+                Intent intent = new Intent(getActivity(), PersonalMainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        /*button12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Personal Statement Activity로 이동하는 코드를 추가합니다.
+                Intent intent = new Intent(getActivity(), PersonalWriteActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        button13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Personal Statement Activity로 이동하는 코드를 추가합니다.
+                Intent intent = new Intent(getActivity(), PersonalGptActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        */
+        employmentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent를 사용하여 브라우저 열기
+                String url = "https://www.jobkorea.co.kr/";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
+
+
 }

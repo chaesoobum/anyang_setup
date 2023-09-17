@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.anyang_setup">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
@@ -9,13 +9,15 @@
         android:label="AYSetup"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Anyang_setup">
+        android:theme="@style/Theme.Anyang_setup"
+        android:usesCleartextTraffic="true"><!-- 보안 쓰래기 만들기 코드 -->
+
         <activity
-            android:name="com.example.anyang_setup.LoginActivity"
+            android:name=".LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.anyang_setup.webview"
+            android:name=".StartActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -25,15 +27,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.anyang_setup.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.anyang_setup.DiagnosisActivity"
+            android:name=".DiagnosisActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
-
-
+        <activity
+            android:name=".PersonalMainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".PersonalWriteActivity" />
+        <activity android:name=".PersonalGptActivity" />
+        <activity android:name=".PersonalLockerActivity" />
     </application>
 
 </manifest>

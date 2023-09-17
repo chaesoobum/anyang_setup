@@ -63,6 +63,8 @@ public class HomeFragment extends Fragment {
 
         final TextView textView = view.findViewById(R.id.Name);
 
+        final TextView textView2 = view.findViewById(R.id.Major);
+
         WebView webView = view.findViewById(R.id.webview_3);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -84,10 +86,26 @@ public class HomeFragment extends Fragment {
                                     }
                                 });
                     }
-                }, 15000); // 15초 대기
+                }, 3000); // 1초 대기
+
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        webView.evaluateJavascript(
+                                "document.getElementById('mainframe_childframe_form_leftContentDiv_widType_BTN_MENU_DIV_menuDiv_DG_LEFT_MENU_body_gridrow_5_cell_5_0_controltree').innerText",
+                                new ValueCallback<String>() {
+                                    @Override
+                                    public void onReceiveValue(String value) {
+                                        String result = value.replaceAll("^\"|\"$", "");
+                                        textView2.setText(result);
+                                    }
+                                });
+                    }
+                }, 3000); // 1초 대기
 
             }
         });
+
 
         webView.loadUrl("https://tis.anyang.ac.kr/main.do");
 

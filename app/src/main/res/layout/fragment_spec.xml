@@ -1,17 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context=".SettingFragment">
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:gravity="center_horizontal"
-        android:text="Spec Fragment" />
+    <RelativeLayout
+        android:layout_width="407dp"
+        android:layout_height="600dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_corners">
+
+        <Button
+            android:id="@+id/personal_button"
+            android:layout_width="362dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="85dp"
+            android:text="자소서 작성"
+            tools:ignore="UnknownId" />
+
+        <Button
+            android:id="@+id/spec_button"
+            android:layout_width="362dp"
+            android:layout_height="70dp"
+            android:layout_below="@id/personal_button"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:text="스펙 작성" />
+
+        <Button
+            android:id="@+id/resume_button"
+            android:layout_width="362dp"
+            android:layout_height="70dp"
+            android:layout_below="@id/spec_button"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:text="이력서 작성" />
+
+        <Button
+            android:id="@+id/employment_button"
+            android:layout_width="362dp"
+            android:layout_height="70dp"
+            android:layout_below="@id/resume_button"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:text="채용공고\n(feat.좝 코리아)" />
+
+    </RelativeLayout>
+
+
+
+
 
 </LinearLayout>

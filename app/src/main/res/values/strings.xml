@@ -9,7 +9,13 @@
         <item>국어국문</item>
         <item>글로벌경영</item>
         <item>유아교육</item>
-
-
     </string-array>
+
+    <string-array name="question_array">
+        <item>질문 1</item>
+        <item>질문 2</item>
+        <item>질문 3</item>
+        <!-- 다른 질문들을 필요한 만큼 추가하세요. -->
+    </string-array>
+
 </resources>
