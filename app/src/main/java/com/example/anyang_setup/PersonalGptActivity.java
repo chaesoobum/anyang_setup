@@ -9,6 +9,17 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 public class PersonalGptActivity extends AppCompatActivity {
 
     private TextView chatTextView;
@@ -36,14 +47,9 @@ public class PersonalGptActivity extends AppCompatActivity {
         String message = messageEditText.getText().toString();
         appendMessage("You: " + message);
 
-        // 여기서 ChatGPT를 호출하고 응답을 받아오는 코드를 추가하세요.
-        // OpenAI API를 사용하여 실제로 메시지를 처리하는 로직을 작성해야 합니다.
-
-        // 예를 들어, 아래와 같이 가상의 응답을 생성하는 코드를 사용할 수 있습니다.
         String response = generateResponse(message);
         appendMessage("ChatGPT: " + response);
 
-        // 메시지 입력창 초기화
         messageEditText.setText("");
     }
 
@@ -62,10 +68,27 @@ public class PersonalGptActivity extends AppCompatActivity {
         });
     }
 
-    // 가상의 응답을 생성하는 함수 (실제로는 OpenAI API를 사용해야 합니다)
     private String generateResponse(String message) {
-        // 여기에 ChatGPT 호출 및 응답을 받아오는 로직을 작성하세요.
-        // 이 함수는 가상의 응답을 반환합니다.
-        return "가상의 응답입니다.";
+        OkHttpClient client = new OkHttpClient();
+
+        String apiUrl = "https://api.openai.com/v1/completions";
+        String requestBody = "{\"model\":\"davinci\", \"prompt\":\"" + message + "\", \"max_tokens\":50}";
+
+        Request request = new Request.Builder()
+                .url(apiUrl)
+                .post(RequestBody.create(MediaType.parse("application/json"), requestBody))
+                .addHeader("Authorization", "Bearer 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")
+                .build();
+
+        try {
+            Response response = client.newCall(request).execute();
+            String responseBody = response.body().string();
+            String completion = new JSONObject(responseBody).getJSONArray("choices").getJSONObject(0).getString("text");
+
+            return completion;
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+            return "오류가 발생했습니다.";
+        }
     }
 }

@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="질문을 선택하시오."
+        android:entries="@array/personal_question_set"
         />
 
     <!-- 글을 입력하는 EditText -->
