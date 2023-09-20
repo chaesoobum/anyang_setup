@@ -77,7 +77,7 @@ public class PersonalGptActivity extends AppCompatActivity {
         Request request = new Request.Builder()
                 .url(apiUrl)
                 .post(RequestBody.create(MediaType.parse("application/json"), requestBody))
-                .addHeader("Authorization", "Bearer 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")
+                .addHeader("Authorization", "Bearer <openai API Keys>")
                 .build();
 
         try {
