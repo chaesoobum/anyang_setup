@@ -78,7 +78,7 @@ public class InfoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_info, container, false);
         Resources res = getResources();
 
-         //이미지 뷰 참조
+        //이미지 뷰 참조
         scrollView = view.findViewById(R.id.scrollView);
         imageView = view.findViewById(R.id.imageView);
         bitmap = (BitmapDrawable) getResources().getDrawable(R.drawable.image01);
@@ -88,7 +88,7 @@ public class InfoFragment extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 //아무런 동작도 하지 않음
+                //아무런 동작도 하지 않음
             }
         });
 

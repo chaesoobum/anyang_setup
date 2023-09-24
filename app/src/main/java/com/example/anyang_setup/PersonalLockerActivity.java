@@ -24,20 +24,14 @@ public class PersonalLockerActivity extends AppCompatActivity {
     private String[] introductionList = {
             "자기소개서 1",
             "자기소개서 2",
-            "자기소개서 3",
-            "자기소개서 4",
-            "자기소개서 5",
+
     };
 
     private void filterIntroductionList(String query) {
-        // 검색어(query)를 기반으로 자기소개서 목록을 필터링하고 다시 표시
-        // 이 예제에서는 간단하게 모든 자기소개서를 표시하도록 함
         displayIntroductionList();
     }
 
     private void displayIntroductionList() {
-        // GridLayout에 자기소개서를 동적으로 추가
-
         LayoutInflater inflater = LayoutInflater.from(this);
         introductionGridLayout.removeAllViews();
 
@@ -47,7 +41,13 @@ public class PersonalLockerActivity extends AppCompatActivity {
             TextView contentTextView = itemView.findViewById(R.id.contentTextView);
 
             titleTextView.setText("자기소개서 " + (i + 1));
-            contentTextView.setText("자기소개서 내용...");
+
+            // 여기서 선택된 질문과 사용자가 입력한 텍스트를 받아와 설정합니다.
+            String selectedQuestion = getIntent().getStringExtra("selectedQuestion");
+            String userText = getIntent().getStringExtra("userText");
+
+            // 선택된 질문과 사용자가 입력한 텍스트를 contentTextView에 설정합니다.
+            contentTextView.setText(selectedQuestion + ": " + userText);
 
             introductionGridLayout.addView(itemView);
         }
@@ -61,14 +61,10 @@ public class PersonalLockerActivity extends AppCompatActivity {
 
         searchEditText = findViewById(R.id.searchEditText);
         introductionGridLayout = findViewById(R.id.introductionGridLayout);
-        selectButton = findViewById(R.id.selectButton);
-        downloadButton = findViewById(R.id.downloadButton);
 
-        // EditText에 텍스트가 입력될 때마다 검색 기능을 활성화
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -76,24 +72,17 @@ public class PersonalLockerActivity extends AppCompatActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
-            }
+            public void afterTextChanged(Editable s) {}
         });
 
-        // 초기 자기소개서 목록 표시
         displayIntroductionList();
 
-        // PersonalWriteActivity에서 전달된 데이터 받기
         Intent intent = getIntent();
         String selectedQuestion = intent.getStringExtra("selectedQuestion");
         String userText = intent.getStringExtra("userText");
 
-        // 받아온 데이터 활용하기
-        // 이 예제에서는 받아온 데이터를 Toast로 표시하는 예시를 들었습니다.
         if (selectedQuestion != null && userText != null) {
             Toast.makeText(this, "선택한 질문: " + selectedQuestion + "\n작성한 텍스트: " + userText, Toast.LENGTH_LONG).show();
         }
     }
-
-    // 이하 생략
 }

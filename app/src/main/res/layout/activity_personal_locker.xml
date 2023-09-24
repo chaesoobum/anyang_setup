@@ -23,7 +23,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:columnCount="3"
-        android:rowCount="3"
+        android:rowCount="1"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:alignmentMode="alignMargins"
@@ -32,22 +32,11 @@
         android:paddingEnd="8dp"
         android:layout_gravity="center"
         android:layoutDirection="ltr"
-        android:layout_rowWeight="1"
+        android:layout_rowWeight="2"
         android:layout_columnWeight="1" />
 
-    <!-- 자기소개서 선택 및 다운로드 버튼 -->
-    <Button
-        android:id="@+id/selectButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="선택"
-        android:layout_marginTop="10dp" />
 
-    <Button
-        android:id="@+id/downloadButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="다운로드"
-        android:layout_marginTop="8dp" />
+    <!-- 자기소개서 선택 및 다운로드 버튼 -->
+
 
 </LinearLayout>

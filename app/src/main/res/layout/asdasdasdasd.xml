@@ -46,7 +46,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
                     android:gravity="center"
-                    android:text="취득학점/"
+                    android:text="취득학점/ 121"
                     android:textSize="17dp" />
 
                 <TextView
@@ -56,7 +56,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="170dp"
                     android:gravity="center"
-                    android:text="졸업학점/"
+                    android:text="졸업학점/ 130"
                     android:textSize="17dp" />
 
             </RelativeLayout>
@@ -68,7 +68,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="-50dp"
                 android:gravity="center"
-                android:text="현재 -- 학점이 부족합니다."
+                android:text="현재 9 학점이 부족합니다."
                 android:textSize="17dp" />
 
             <TextView
