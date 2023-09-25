@@ -41,7 +41,8 @@
         <activity android:name=".PersonalWriteActivity" />
         <activity android:name=".PersonalGptActivity" />
         <activity android:name=".PersonalLockerActivity" />
-        <activity android:name=".SpecActivity"/>
+        <activity android:name=".SpecActivity" />
+        <activity android:name=".CertificateActivity" />
     </application>
 
 </manifest>

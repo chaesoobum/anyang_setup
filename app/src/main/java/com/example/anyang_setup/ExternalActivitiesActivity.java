@@ -17,11 +17,11 @@ public class ExternalActivitiesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.certificate_write);
+        setContentView(R.layout.external_activities_write);
 
-        externalActivitiesText = findViewById(R.id.certificate_text);
-        saveButton = findViewById(R.id.certificate_write_save_button);
-        resetButton = findViewById(R.id.certificate_write_reset_button);
+        externalActivitiesText = findViewById(R.id.external_activities_text);
+        saveButton = findViewById(R.id.external_activities_write_save_button);
+        resetButton = findViewById(R.id.external_activities_write_reset_button);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
