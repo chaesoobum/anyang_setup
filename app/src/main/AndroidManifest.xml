@@ -43,6 +43,8 @@
         <activity android:name=".PersonalLockerActivity" />
         <activity android:name=".SpecActivity" />
         <activity android:name=".CertificateActivity" />
+        <activity android:name=".ExternalActivitiesActivity" />
+        <activity android:name=".AwardsActivity" />
     </application>
 
 </manifest>
