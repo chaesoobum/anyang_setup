@@ -80,7 +80,6 @@ public class InfoFragment extends Fragment {
 
         //이미지 뷰 참조
         scrollView = view.findViewById(R.id.scrollView);
-        imageView = view.findViewById(R.id.imageView);
         bitmap = (BitmapDrawable) getResources().getDrawable(R.drawable.image01);
 
         setSpinner(view);

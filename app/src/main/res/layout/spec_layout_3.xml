@@ -98,6 +98,54 @@
 
         </TableRow>
 
+
+
+        <!-- 테이블 내용은 동적으로 추가됩니다. -->
+    </TableLayout>
+
+
+    <!-- 대외활동 테이블 -->
+    <TableLayout
+        android:id="@+id/Award_winning_experienceTable"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:stretchColumns="10"
+        android:layout_margin="20dp"
+        android:background="@color/white"
+
+        >
+        <Button
+            android:id="@+id/add_Award_winning_experienceButton"
+            android:layout_width="53dp"
+            android:layout_height="wrap_content"
+            android:onClick="add_external_activitiesRow"
+            android:text="+" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- 자격증 목록 텍스트 -->
+            <TextView
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingEnd="20dp"
+                android:text="수상경력"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <!-- + 버튼 -->
+
+        </TableRow>
+
+
+
+
+
+
+
+
         <!-- 테이블 내용은 동적으로 추가됩니다. -->
     </TableLayout>
 

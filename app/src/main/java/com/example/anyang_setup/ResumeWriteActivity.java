@@ -9,6 +9,7 @@ import android.provider.OpenableColumns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -26,6 +27,8 @@ public class ResumeWriteActivity extends AppCompatActivity {
     private FloatingActionButton fabMain, fabUpload, fabDelete;
     private ArrayList<String> uploadedFiles = new ArrayList<>();
     private ArrayAdapter<String> adapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +54,15 @@ public class ResumeWriteActivity extends AppCompatActivity {
             }
         });
 
+        Uri uri;
+        ImageView imageView;
+
         fabMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 toggleFab();
             }
         });
-
         fabUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,7 +134,7 @@ public class ResumeWriteActivity extends AppCompatActivity {
     }
 
     private void toggleFab() {
-        Toast.makeText(this, "메인 플로팅 버튼 클릭", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "메인 플로팅 버튼 클릭", Toast.LENGTH_SHORT).show();
 
         if (isFabOpen) {
             ObjectAnimator.ofFloat(fabDelete, "translationY", 0f).start();
@@ -143,4 +148,5 @@ public class ResumeWriteActivity extends AppCompatActivity {
 
         isFabOpen = !isFabOpen;
     }
+
 }

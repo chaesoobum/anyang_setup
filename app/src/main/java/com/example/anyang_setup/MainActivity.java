@@ -21,11 +21,28 @@ public class MainActivity extends AppCompatActivity {
 
     public static WebView myWebView;
 
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String IDtomain = extras.getString("IDtomain");
+            String PWtomain = extras.getString("PWtomain");
+
+            // HomeFragment에 데이터 전달
+            if (homeFragment != null) {
+                homeFragment.receiveData(IDtomain, PWtomain);
+            }
+        }
 
 
         homeFragment = new HomeFragment();

@@ -191,7 +191,7 @@
                     android:layout_below="@id/resume_write_button"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="50dp"
-                    android:text="자소서 보관함" />
+                    android:text="이력서 보관함" />
 
 
 

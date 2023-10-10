@@ -27,8 +27,9 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mUsernameEditText;
     private EditText mPasswordEditText;
     private Button mLoginButton;
-
     private WebView myWebView;
+
+    private WebView webview_for_timetable;
 
 
 
@@ -38,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_activity);
 
         myWebView = findViewById(R.id.webview);
+        webview_for_timetable = findViewById(R.id.webview_for_timetable);
         mUsernameEditText = findViewById(R.id.username_edit_text);
         mPasswordEditText = findViewById(R.id.password_edit_text);
         mLoginButton = findViewById(R.id.login_button);
@@ -59,6 +61,22 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         };
+
+        webview_for_timetable.setWebViewClient(webViewClient);
+        webview_for_timetable.setWebChromeClient(new WebChromeClient());
+        webview_for_timetable.getSettings().setJavaScriptEnabled(true); // JavaScript 활성화
+
+        // 쿠키 관리를 위한 설정
+        CookieManager cookieManager0 = CookieManager.getInstance();
+        cookieManager0.setAcceptCookie(true);
+        cookieManager0.setAcceptThirdPartyCookies(webview_for_timetable, true);
+        CookieSyncManager.createInstance(this);
+
+        webview_for_timetable.loadUrl("https://portal.anyang.ac.kr/index.jsp");
+        webview_for_timetable.setVisibility(View.GONE);
+
+
+
 
         myWebView.setWebViewClient(webViewClient);
         myWebView.setWebChromeClient(new WebChromeClient());
@@ -115,8 +133,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             };
 
-            //서버로 Volley를 이용해서 요청
-
 
             myWebView.evaluateJavascript(
                     "(function() { " +
@@ -129,6 +145,8 @@ public class LoginActivity extends AppCompatActivity {
                             "})();",
                     null
             );
+
+
 
             myWebView.setWebViewClient(new WebViewClient() {
                 @Override
@@ -143,6 +161,39 @@ public class LoginActivity extends AppCompatActivity {
                                         "    if (loginButton) { " +
                                         "        loginButton.addEventListener('click', function() { " +
                                         "            window.location.href = 'https://tis.anyang.ac.kr/main.do'; " +
+                                        "        }); " +
+                                        "    } " +
+                                        "})();",
+                                null
+                        );
+                    }
+                }
+            });
+
+            webview_for_timetable.evaluateJavascript(
+                    "(function() { " +
+                            "    document.getElementById('login').value = '" + ID + "'; " +
+                            "    document.getElementById('password').value = '" + password + "'; " +
+                            "    var loginButton = document.getElementById('loginImg'); " +
+                            "    if (loginButton) { " +
+                            "        loginButton.click(); " +
+                            "    } " +
+                            "})();",
+                    null
+            );
+            webview_for_timetable.setWebViewClient(new WebViewClient() {
+                @Override
+                public void onPageFinished(WebView view, String url) {
+                    super.onPageFinished(view, url);
+
+                    // 로그인 버튼의 id가 "loginImg"인 경우 클릭 이벤트 처리
+                    if (url.equals("https://portal.anyang.ac.kr/index.jsp")) {
+                        webview_for_timetable.evaluateJavascript(
+                                "(function() { " +
+                                        "    var loginButton = document.getElementById('loginImg'); " +
+                                        "    if (loginButton) { " +
+                                        "        loginButton.addEventListener('click', function() { " +
+                                        "            window.location.href = 'https://portal.anyang.ac.kr/web/15139/1'; " +
                                         "        }); " +
                                         "    } " +
                                         "})();",
@@ -177,6 +228,12 @@ public class LoginActivity extends AppCompatActivity {
                                 if (isLoginSuccessful) {
                                     // 로그인에 성공한 경우 메인 액티비티로 이동
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    String IDtomain = ID;
+                                    String PWtomain = password;
+                                    intent.putExtra("IDtomain", IDtomain);
+                                    intent.putExtra("PWtomain", PWtomain);
+
+
                                     startActivity(intent);
                                     finish();
 
@@ -197,6 +254,8 @@ public class LoginActivity extends AppCompatActivity {
 
         // JavaScript로 로그인 버튼 클릭 이벤트 처리
         myWebView.loadUrl("https://tis.anyang.ac.kr/main.do#");
+
+        webview_for_timetable.loadUrl("https://portal.anyang.ac.kr/");
 
 
     }

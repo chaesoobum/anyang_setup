@@ -20,8 +20,8 @@
     <item
         android:id="@+id/info"
         android:enabled="true"
-        android:icon="@drawable/ic_info"
-        android:title="커리큘럼"
+        android:icon="@drawable/ic_profile"
+        android:title="커뮤니티"
         app:showAsAction="always"
         />
 

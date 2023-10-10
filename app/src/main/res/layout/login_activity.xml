@@ -5,7 +5,13 @@
     <WebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="20dp"
+        android:layout_marginTop="450dp"/>
+    <WebView
+        android:id="@+id/webview_for_timetable"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="470dp"/>
 
 
     <TextView
@@ -19,6 +25,17 @@
         android:text="안양대학교 Setup"
         android:textColor="@color/white"
         android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/auto_login"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="313dp"
+        android:gravity="center"
+        android:text="자동로그인"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/username_edit_text"
@@ -43,6 +60,13 @@
         android:drawablePadding="10dp"
         android:hint="비밀번호"
         android:inputType="textPassword" />
+
+    <CheckBox
+        android:id="@+id/auto_login_on_off"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="340dp"
+        android:layout_marginLeft="135dp"/>
 
     <Button
         android:id="@+id/login_button"
