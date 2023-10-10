@@ -65,9 +65,8 @@ public class SpecFragment extends Fragment {
 
         // 버튼을 찾아서 클릭 리스너를 설정합니다.
         Button button11 = view.findViewById(R.id.personal_button); //자기소개서 버튼
-        Button button12 = view.findViewById(R.id.spec_button);
-
-        /*Button button13 = view.findViewById(R.id.button13);*/
+        Button button12 = view.findViewById(R.id.spec_button); //스펙 버튼
+        Button button13 = view.findViewById(R.id.resume_button); // 이력서 버튼
         Button employmentButton = view.findViewById(R.id.employment_button);
         button11.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,17 +87,17 @@ public class SpecFragment extends Fragment {
         });
 
 
-        /*
+
         button13.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Personal Statement Activity로 이동하는 코드를 추가합니다.
-                Intent intent = new Intent(getActivity(), PersonalGptActivity.class);
+                Intent intent = new Intent(getActivity(), ResumeMainActivity.class);
                 startActivity(intent);
             }
         });
 
-        */
+
         employmentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

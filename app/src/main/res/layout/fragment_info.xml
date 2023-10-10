@@ -39,8 +39,6 @@
                 android:onClick="onButton1Clicked"
                 app:srcCompat="@drawable/image01" />
         </ScrollView>
-
     </HorizontalScrollView>
-
 
 </RelativeLayout>
