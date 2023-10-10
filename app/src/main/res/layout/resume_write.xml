@@ -57,11 +57,14 @@
         android:layout_marginTop="100dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:layout_marginBottom="100dp"
         android:id="@+id/file_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:background="@android:color/white" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

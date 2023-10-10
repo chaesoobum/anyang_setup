@@ -23,6 +23,7 @@ import java.util.ArrayList;
 public class ResumeWriteActivity extends AppCompatActivity {
 
     private static final int FILE_SELECT_CODE = 0;
+    private int selectedFileIndex = -1;
     private boolean isFabOpen = false;
     private FloatingActionButton fabMain, fabUpload, fabDelete;
     private ArrayList<String> uploadedFiles = new ArrayList<>();
@@ -73,9 +74,26 @@ public class ResumeWriteActivity extends AppCompatActivity {
         fabDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ResumeWriteActivity.this, "삭제 버튼 클릭", Toast.LENGTH_SHORT).show();
+                if (selectedFileIndex != -1) {
+                    // 선택한 파일을 삭제합니다.
+                    uploadedFiles.remove(selectedFileIndex);
+                    adapter.notifyDataSetChanged();
+                    selectedFileIndex = -1; // 선택한 파일을 초기화합니다.
+                } else {
+                    Toast.makeText(ResumeWriteActivity.this, "파일을 선택해주세요.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+        fileListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                // 선택한 파일의 인덱스를 저장합니다.
+                selectedFileIndex = position;
+                String fileName = uploadedFiles.get(position);
+                Toast.makeText(ResumeWriteActivity.this, "파일 열기: " + fileName, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     /**
