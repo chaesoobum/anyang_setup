@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ResumeMainActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:text="이력서 양식"
-        android:gravity="center"
-        android:textSize="20dp"/>
-
-
-
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_upload"
         android:layout_width="wrap_content"

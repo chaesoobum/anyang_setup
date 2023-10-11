@@ -19,15 +19,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ResumeWriteActivity extends AppCompatActivity {
 
     private static final int FILE_SELECT_CODE = 0;
-    private int selectedFileIndex = -1;
+
     private boolean isFabOpen = false;
     private FloatingActionButton fabMain, fabUpload, fabDelete;
     private ArrayList<String> uploadedFiles = new ArrayList<>();
     private ArrayAdapter<String> adapter;
+    private ArrayList<Integer> selectedFileIndices = new ArrayList<>(); // 선택한 파일의 인덱스를 저장하는 ArrayList
+
+    private boolean isFileSelectionEnabled = false;
 
 
 
@@ -45,13 +49,17 @@ public class ResumeWriteActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, uploadedFiles);
         fileListView.setAdapter(adapter);
 
-        // 파일 목록에서 항목을 클릭하면 해당 파일을 열 수 있도록 설정
+        // 파일 목록에서 항목을 클릭하면 선택 상태를 토글하도록 설정
         fileListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                // 여기에서 파일을 열거나 관련 작업을 수행할 수 있습니다.
-                String fileName = uploadedFiles.get(position);
-                Toast.makeText(ResumeWriteActivity.this, "파일 열기: " + fileName, Toast.LENGTH_SHORT).show();
+                if (isFabOpen) {
+                    toggleFileSelection(view, position);
+                } else {
+                    // 파일을 클릭했을 때 파일 열기 로직 추가 ****************************************************
+                    openFile(uploadedFiles.get(position));
+
+                }
             }
         });
 
@@ -71,30 +79,54 @@ public class ResumeWriteActivity extends AppCompatActivity {
             }
         });
 
-        fabDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (selectedFileIndex != -1) {
-                    // 선택한 파일을 삭제합니다.
-                    uploadedFiles.remove(selectedFileIndex);
-                    adapter.notifyDataSetChanged();
-                    selectedFileIndex = -1; // 선택한 파일을 초기화합니다.
-                } else {
-                    Toast.makeText(ResumeWriteActivity.this, "파일을 선택해주세요.", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        // 파일 목록에서 항목을 클릭하면 선택 상태를 토글하도록 설정
         fileListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                // 선택한 파일의 인덱스를 저장합니다.
-                selectedFileIndex = position;
-                String fileName = uploadedFiles.get(position);
-                Toast.makeText(ResumeWriteActivity.this, "파일 열기: " + fileName, Toast.LENGTH_SHORT).show();
+                if (isFileSelectionEnabled) {
+                    toggleFileSelection(view, position);
+                }
             }
         });
 
+        fabDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleFileSelectionEnabled();
+            }
+        });
     }
+
+    private void toggleFileSelectionEnabled() {
+
+        ListView fileListView = findViewById(R.id.file_list_view);
+
+        isFileSelectionEnabled = !isFileSelectionEnabled;
+
+        if (!isFileSelectionEnabled) {
+            // 선택 상태가 비활성화된 경우 삭제 버튼이 눌린 것으로 간주하여 파일 삭제 작업을 수행
+            if (selectedFileIndices.isEmpty()) {
+                Toast.makeText(ResumeWriteActivity.this, "파일을 선택해주세요.", Toast.LENGTH_SHORT).show();
+            } else {
+                // 선택한 항목을 삭제합니다.
+                Collections.sort(selectedFileIndices, Collections.reverseOrder());
+                for (Integer index : selectedFileIndices) {
+                    uploadedFiles.remove(index.intValue());
+                }
+                adapter.notifyDataSetChanged();
+                selectedFileIndices.clear();
+                Toast.makeText(ResumeWriteActivity.this, "선택한 파일이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+
+                // 선택된 파일 삭제 후, 남은 파일들의 배경색을 투명으로 변경
+                for (int i = 0; i < fileListView.getChildCount(); i++) {
+                    View item = fileListView.getChildAt(i);
+                    item.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                }
+            }
+        }
+    }
+
+
 
     /**
      * 파일 선택 다이얼로그를 열기 위한 메서드
@@ -129,6 +161,23 @@ public class ResumeWriteActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void toggleFileSelection(View view, int position) {
+        if (selectedFileIndices.contains(position)) {
+            // 이미 선택한 항목인 경우 선택 취소
+            selectedFileIndices.remove(Integer.valueOf(position));
+            view.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        } else {
+            // 새로 선택한 항목인 경우 선택
+            selectedFileIndices.add(position);
+            view.setBackgroundColor(getResources().getColor(R.color.gray));
+        }
+    }
+    private void openFile(String fileName) {
+        // 파일 열기 로직을 여기에 추가
+        Toast.makeText(ResumeWriteActivity.this, "파일 열기: " + fileName, Toast.LENGTH_SHORT).show();
+    }
+
 
     // 파일 Uri에서 파일 이름 가져오기
     private String getFileName(Uri uri) {
