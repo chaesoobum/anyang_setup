@@ -1,4 +1,3 @@
-![슬라이드2](https://github.com/chaesoobum/anyang_setup/assets/130902668/48778c23-1828-4baa-aeea-c61e95263cb3)
 # AY_SETUP
 ##### java와 python을 사용하여 제작한 안양대학교 어플리케이션입니다.
 
@@ -55,3 +54,6 @@
 |강병선|소프트웨어전공|*|
 |박재윤|소프트웨어전공|*|
 |채수범|소프트웨어전공|*|
+
+![슬라이드2](https://github.com/chaesoobum/anyang_setup/assets/130902668/48778c23-1828-4baa-aeea-c61e95263cb3)
+
